@@ -146,5 +146,4 @@ public class CategoriaDAO implements IPersistenciaDAO<CategoriaDTO> {
 		return dto;
 	}
 
-	
 }
