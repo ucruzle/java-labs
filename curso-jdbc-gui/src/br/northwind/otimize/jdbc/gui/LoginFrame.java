@@ -117,14 +117,14 @@ public class LoginFrame extends javax.swing.JFrame {
 					    .addComponent(lblSenha, GroupLayout.Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 					.addGroup(panelLoginLayout.createParallelGroup()
-					    .addComponent(passSenha, GroupLayout.Alignment.LEADING, 0, 285, Short.MAX_VALUE)
-					    .addComponent(txtLogin, GroupLayout.Alignment.LEADING, 0, 285, Short.MAX_VALUE))
+					    .addComponent(passSenha, GroupLayout.Alignment.LEADING, 0, 273, Short.MAX_VALUE)
+					    .addComponent(txtLogin, GroupLayout.Alignment.LEADING, 0, 273, Short.MAX_VALUE))
 					.addContainerGap());
 				panelLoginLayout.linkSize(SwingConstants.HORIZONTAL, new Component[] {passSenha, txtLogin});
 				panelLoginLayout.setVerticalGroup(panelLoginLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(panelLoginLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-					    .addComponent(txtLogin, GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
+					    .addComponent(txtLogin, GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
 					    .addComponent(lblLogin, GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(21)
 					.addGroup(panelLoginLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
@@ -142,14 +142,17 @@ public class LoginFrame extends javax.swing.JFrame {
 						
 						LoginDTO dto = new LoginDTO();
 						dto.setLogin(txtLogin.getText());
-						dto.setSenha(passSenha.getSelectedText());
+						dto.setSenha(new String(passSenha.getPassword()));
 						
 						LoginBO bo = new LoginBO();
 						
 						try {
 							
 							if (bo.logar(dto)) {
-								MensagensUtil.addMsg(LoginFrame.this, "Login efetuado com sucesso!");
+								LoginFrame.this.dispose();
+								MainFrame mainFrame = new MainFrame();
+								mainFrame.setLocationRelativeTo(null);
+								mainFrame.setVisible(true);
 							} else {
 								MensagensUtil.addMsg(LoginFrame.this, "Dados inválidos!");
 							}
@@ -167,21 +170,18 @@ public class LoginFrame extends javax.swing.JFrame {
 				.addComponent(panelLogin, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
 				.addGroup(thisLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-				    .addComponent(btnLogar, GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+				    .addComponent(btnLogar, GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
 				    .addComponent(btnSair, GroupLayout.Alignment.BASELINE, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
 				.addContainerGap());
 			thisLayout.setHorizontalGroup(thisLayout.createSequentialGroup()
 				.addContainerGap()
 				.addGroup(thisLayout.createParallelGroup()
-				    .addGroup(GroupLayout.Alignment.LEADING, thisLayout.createSequentialGroup()
-				        .addComponent(panelLogin, 0, 359, Short.MAX_VALUE)
-				        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED))
+				    .addComponent(panelLogin, GroupLayout.Alignment.LEADING, 0, 361, Short.MAX_VALUE)
 				    .addGroup(GroupLayout.Alignment.LEADING, thisLayout.createSequentialGroup()
 				        .addGap(0, 178, Short.MAX_VALUE)
 				        .addComponent(btnLogar, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
 				        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-				        .addComponent(btnSair, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-				        .addGap(11)))
+				        .addComponent(btnSair, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)))
 				.addContainerGap());
 			thisLayout.linkSize(SwingConstants.VERTICAL, new Component[] {btnLogar, btnSair});
 			thisLayout.linkSize(SwingConstants.HORIZONTAL, new Component[] {btnSair, btnLogar});

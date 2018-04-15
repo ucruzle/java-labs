@@ -7,8 +7,7 @@ import java.util.ResourceBundle;
 
 public class ConexaoUtil {
 	
-private static ResourceBundle config;
-	
+	private static ResourceBundle config;
 	private static ConexaoUtil conexaoUtil;
 	
 	private ConexaoUtil() {
@@ -28,5 +27,5 @@ private static ResourceBundle config;
 		Class.forName(config.getString("br.northwind.otimiza.db.driver.mssqlserver"));		
 		return DriverManager.getConnection(config.getString("br.northwind.otimiza.db.url.conexao"));
 	}
-
+	
 }
