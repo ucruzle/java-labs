@@ -9,7 +9,7 @@ import br.northwind.otimize.jdbc.dto.LoginDTO;
 import br.northwind.otimize.jdbc.exception.PersistenciaException;
 
 public class LoginDAO implements IPersistenciaDAO<LoginDTO> {
-
+	
 	public boolean logar(LoginDTO loginDTO) throws PersistenciaException {
 		
 		boolean resultado = false;
